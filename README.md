@@ -1,5 +1,5 @@
 # Insert Sort Symulacja
-![Insert Sort](https://jkogut.pl/assets/insertion_sort.jpg)
+![Insert Sort](https://jkogut.pl/assets/insertion-sort.jpg)
 
 # Problem
 Jaka jest charakterystyka algorytmu sortowania przez wstawianie dla losowego wejścia?
