@@ -3,7 +3,7 @@ CXX = g++
 CXXFLAGS = -Wall -std=c++11
 
 # Target executable
-TARGET = ballancedAllocation
+TARGET = insertSort
 
 # Source files
 SRCS = main.cpp

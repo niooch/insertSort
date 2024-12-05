@@ -2,7 +2,7 @@
 #include <random>
 #include <algorithm>
 #include <iostream>
-
+void symulacja(int n);
 int main(int argc, char** argv) {
     //wczytaj liczbe n
     if(argc!=2){
@@ -10,6 +10,12 @@ int main(int argc, char** argv) {
         return 1;
     }
     int n = std::stoi(argv[1]);
+    for(int i=1; i<=50; i++){
+        symulacja(n);
+    }
+    return 0;
+}
+void symulacja(int n){
     //generuj tablice o dlugosci n
     std::vector<int> tab(n);
     //inicjalizuj generator liczb losowych merseene twister
@@ -21,8 +27,8 @@ int main(int argc, char** argv) {
     }
     std::shuffle(tab.begin(), tab.end(), gen);
     //insertion sort, policz ile jest wykonanych porownan, oraz przesuniec miedzy kluczami
-    int porownania = 0;
-    int przesuniecia = 0;
+    long long porownania = 0;
+    long long przesuniecia = 0;
     for(int i=1; i<n; i++){
         int j = i;
         while(j>0 && tab[j-1]>tab[j]){
@@ -35,5 +41,4 @@ int main(int argc, char** argv) {
     }
     //wypisz wynik
     std::cout<<n<<";"<<porownania<<";"<<przesuniecia<<std::endl;
-    return 0;
 }

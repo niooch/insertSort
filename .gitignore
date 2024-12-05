@@ -1,6 +1,6 @@
 #ignoruj binarki
 *.o
-ballancedAllocation
+insertSort
 
 #ignoruj pliki z danymi
 *.dat
