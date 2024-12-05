@@ -22,25 +22,22 @@ EOF
     gnuplot $gnuplot_skrypt
 }
 
-plotujPodwojny(){
+plotujRatio(){
     local gnuplot_skrypt="plot.gnuplot"
     local typ1=$1
     local pozycja1=$2
-    local typ2=$3
-    local pozycja2=$4
     cat > $gnuplot_skrypt << EOF
     set terminal pngcairo size 800,600 enhanced font "Verdana,10"
-    set output "$typ1-$typ2.png"
+    set output "$typ1.png"
     set datafile separator ";"
     set grid
 
-    set title "Wykres $typ1, $typ2 w zależności od n"
+    set title "Wykres $typ1 w zależności od n"
     set xlabel "n"
     set ylabel "stosunek"
 
     plot \
-        "ratios.dat" using 1:$pozycja1 title "$typ1" with points pt 7 lc rgb "blue", \
-        "ratios.dat" using 1:$pozycja2 title "$typ2" with points pt 7 lc rgb "red"
+        "ratios.dat" using 1:$pozycja1 title "$typ1" with points pt 7 lc rgb "blue"
 EOF
     gnuplot $gnuplot_skrypt
 }
@@ -104,8 +101,8 @@ for n in $wartosci_n; do
     swap=$(echo $linia | cut -d";" -f3)
     cmp1=$(echo "scale=10; $cmp/$n" | bc -l)
     swap1=$(echo "scale=10; $swap/$n" | bc -l)
-    cmp2=$(echo "scale=10; $cmp1/$n" | bc -l)
-    swap2=$(echo "scale=10; $swap1/$n" | bc -l)
+    cmp2=$(echo "scale=10; $cmp/($n*$n)" | bc -l)
+    swap2=$(echo "scale=10; $swap/($n*$n)" | bc -l)
     echo "$n;$cmp;$swap;$cmp1;$swap1;$cmp2;$swap2" >> ratios.dat
 done
 exec 3<&-
@@ -114,8 +111,10 @@ exec 3<&-
 
 plotuj "porownania" 2 2
 plotuj "przestawienia" 3 3
-plotujPodwojny "porownaniaOVERn" 4 "porownaniaOVERn^2" 6
-plotujPodwojny "przestawieniaOVERn" 5 "przestawieniaOVERn^2" 7
+plotujRatio "porownaniaOVERn" 4
+plotujRatio "przestawieniaOVERn" 5
+plotujRatio "porownaniaOVERn2" 6
+plotujRatio "przestawieniaOVERn2" 7
 
 #przenies wykresy do odpowiedniego katalogu
 mkdir -p wykresy

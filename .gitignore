@@ -12,7 +12,7 @@ insertSort
 wykresy/
 
 #FIFO
-./plot.gnuplot
+plot.gnuplot
 
 #kompilacja .tex
 *.aux

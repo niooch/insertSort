@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{polski}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,
+    urlcolor=cyan,
+}
+
+\title{Symulowanie Procesów Losowych - Algorytm Insert Sort}
+\author{Jakub Kogut}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Wstęp}
+Sprawodzanie do zadania domowego 3, zadanie 2. -- \textit{Sortowanie przez wstawianie losowych danych}.
+\section{Opis Zadania}
+Zadanie polegało na zaimplementowaniu algorytmu sortowania przez wstawianie oraz przeprowadzeniu symulacji dla różnych wartości $n$. \newline
+Celem zadania było wyznaczenie ilości przestawień oraz porównań w poszczególnych powtórzeniach działania alorytmu.
+\section{Metodologia}
+Podana była ustalona wartość $k=50$ powtórzeń eksperymentu dla każdego $n$. Wartość $n$ miała pochodzić ze zbioru $\{k \times 10^2: k \in \{1, ..., 10^2\}\}$. Dla każdego $n$ wyznaczano średnią z $k$ powtórzeń eksperymentu. Następnie wyznaczano odpowiednio wartość cmp(n) oraz s(n) dla każdego $n$.
+\section{Wnioski}
+Na podstawie przeprowadzonych symulacji można zauważyć, że obydwie wartości $cmp(n)$ oraz $s(n)$ rosną kwadratowo. Koncentracja poszczególnych wyników wokół średniej wartości jest wysoka.
+\subsection{Porównania $cmp(n)$}
+Na \hyperref[fig:cmp]{wykresie} można zauważyć, że wartość $cmp(n)$ rośnie kwadratowo. Wartość $cmp(n)$ jest zależna od ilości porównań w algorytmie. Asymptotyke jasno można określić jako $O(n^2)$ przyglądając się \hyperref[fig:cmpOvern2]{wykresowi.}
+\subsection{Przestawienia $s(n)$}
+Na \hyperref[fig:s]{wykresie} można zauważyć, że wartość $s(n)$ rośnie kwadratowo. Wartość $s(n)$ jest zależna od ilości przestawień w algorytmie. Asymptotyke jasno można określić jako $O(n^2)$ przyglądając się \hyperref[fig:Ln1]{wykresowi.}
+\section{Podsumowanie}
+
+\section{Wykresy}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wykresy/porownania.png}
+    \caption{Wykres watosci $cmp(n)$}
+    \label{fig:cmp}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wykresy/przestawienia.png}
+    \caption{Wykres watosci $s(n)$}
+    \label{fig:s}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wykresy/przestawieniaOVERn.png}
+    \caption{Wykres wartości $\frac{s(n)}{n}$}
+    \label{fig:sOvern}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wykresy/przestawieniaOVERn2.png}
+    \caption{Wykres wartości $L_n^{(2)}$}
+    \label{fig:Ln1}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wykresy/porownaniaOVERn.png}
+    \caption{Wykres wartości $\frac{cmp(n)}{n}$}
+    \label{fig:cmpOvern}
+\end{figure}
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.8\textwidth]{wykresy/porownaniaOVERn2.png}
+    \caption{Wykres wartości $\frac{cmp(n)}{n^2}$}
+    \label{fig:cmpOvern2}
+\end{figure}
+\end{document}
